@@ -13,7 +13,9 @@ server.get('/api/users', async (req, res) => {
         const users = await User.find()
         res.status(200).json(users)
     } catch (err) {
-        res.status(500).json({ message: `${err.message}` })
+        res.status(500).json({
+             message: `${err.message}`
+             })
     }
 })
 //   [GET]  R  in Crud FETCH
@@ -22,12 +24,16 @@ server.get('/api/users/:id', async (req, res) => {
         const { id } = req.params
         const user = await User.findById(id)
         if (!user) {
-            res.status(404).json({ message: ` user id: ${id} does not exist` })
+            res.status(404).json({
+                 message: ` user id: ${id} does not exist` 
+                })
         } else {
             res.status(200).json(user)
         }
     } catch (err) {
-        res.status(500).json({ message: `Error fetching User ${req.params.id}:${err.message}` })
+        res.status(500).json({ 
+            message: `Error fetching User ${req.params.id}:${err.message}`
+         })
     }
 })
 
@@ -47,7 +53,9 @@ server.post('/api/users', async (req, res) => {
             res.status(201).json(createdUser)
         }
     } catch (err) {
-        res.status(500).json({ message: `Error Creating User:${err.message}` })
+        res.status(500).json({ 
+            message: `Error Creating User:${err.message}`
+         })
     }
 })
 
